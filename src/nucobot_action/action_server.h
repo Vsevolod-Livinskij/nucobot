@@ -47,6 +47,7 @@ private:
     geometry_msgs::Pose2D target;
     std::string target_name;
     gazebo_msgs::ModelStates obj_map;
+    bool need_clear_map;
 
 public:
     ActionServer(ros::NodeHandle nh_);
@@ -63,6 +64,8 @@ public:
     bool set_position(geometry_msgs::PoseStamped position_);
     geometry_msgs::PoseStamped get_position();
     bool set_closest_as_target (std::string obj_name);
+    bool set_need_clear_map(bool val);
+    bool get_need_clear_map();
 };
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -65,7 +65,7 @@ void gen_flatcircle(double r, double x, double y)
 
 void target_obj_callback(const std_msgs::String::ConstPtr &obj)
 {
-    if (target_obj.data != obj->data) {
+    if (!obj->data.empty() && target_obj.data != obj->data) {
         target_obj_changed = true;
         target_obj.data = obj->data;
         if (!(std::find(untracked_objs.begin(), untracked_objs.end(), obj->data) != untracked_objs.end()))

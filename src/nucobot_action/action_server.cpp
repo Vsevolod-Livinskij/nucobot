@@ -29,6 +29,7 @@ ActionServer::ActionServer(ros::NodeHandle nh_):
     this->target.x = NAN;
     this->target.y = NAN;
     this->target_name = "";
+    this->need_clear_map = false;
 
     as_achieve_target.start();
 }
@@ -48,6 +49,7 @@ void ActionServer::achieveTargetCB(const nucobot_action::AchieveTargetGoalConstP
 
     ROS_ERROR("%s: %lg | %lg", this->target_name.c_str(), this->target.x, this->target.y);
 
+    this->set_need_clear_map(false);
 
     move_base_msgs::MoveBaseGoal move_base_goal;
     move_base_goal.target_pose.pose.position.x = this->target.x;
@@ -146,7 +148,16 @@ bool ActionServer::set_closest_as_target (std::string obj_name) {
     return false;
 }
 
+bool ActionServer::set_need_clear_map(bool val)
+{
+    this->need_clear_map = val;
+    return true;
+}
 
+bool ActionServer::get_need_clear_map()
+{
+    return this->need_clear_map;
+}
 ////////////////////////////////////////////////////////////////////////////////
 //  Utility functions
 ////////////////////////////////////////////////////////////////////////////////

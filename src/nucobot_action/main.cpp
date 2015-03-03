@@ -17,7 +17,10 @@ void obj_map_callback(const gazebo_msgs::ModelStates::ConstPtr &data)
 {
     act_srv->set_obj_map(*data);
     std_msgs::String target_obj_msg;
-    target_obj_msg.data = act_srv->get_target_name().c_str();
+    if (act_srv->get_need_clear_map())
+        target_obj_msg.data = act_srv->get_target_name().c_str();
+    else
+        target_obj_msg.data = "";
     pub_target_obj.publish(target_obj_msg);
 }
 

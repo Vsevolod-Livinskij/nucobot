@@ -36,19 +36,19 @@
   <link name="whisker_left">
     <visual>
       <geometry>
-        <box size="0.4 0.02 0.02"/>
+        <box size="0.2 0.02 0.02"/>
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </visual>
     <collision>
       <geometry>
-        <box size="0.4 0.02 0.02"/>
+        <box size="0.2 0.02 0.02"/>
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </collision>
     <inertial>
       <origin xyz="0 0 0"/>
-      <mass value="0.4"/>
+      <mass value="0.2"/>
       <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
                iyy="0.019995" iyz="0.0" 
                izz="0.03675" />
@@ -58,19 +58,19 @@
   <link name="whisker_right">
     <visual>
       <geometry>
-        <box size="0.4 0.02 0.02"/>
+        <box size="0.2 0.02 0.02"/>
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </visual>
     <collision>
       <geometry>
-        <box size="0.4 0.02 0.02"/>
+        <box size="0.2 0.02 0.02"/>
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </collision>
     <inertial>
       <origin xyz="0 0 0"/>
-      <mass value="0.4"/>
+      <mass value="0.2"/>
       <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
                iyy="0.019995" iyz="0.0" 
                izz="0.03675" />

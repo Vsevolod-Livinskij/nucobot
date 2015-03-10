@@ -15,9 +15,9 @@ oscillation_timeout: 10.0
 oscillation_distance: 0.2
 
 # local planner - default is trajectory rollout
-base_local_planner: "base_local_planner/TrajectoryPlannerROS" # alternatives dwa_local_planner/DWAPlannerROS
+base_local_planner: "base_local_planner/TrajectoryPlannerROS" # alternatives dwa_local_planner/DWAPlannerROS base_local_planner/TrajectoryPlannerROS
 
-base_global_planner: "navfn/NavfnROS" #alternatives: global_planner/GlobalPlanner, carrot_planner/CarrotPlanner
+base_global_planner: "navfn/NavfnROS" #alternatives: global_planner/GlobalPlanner, carrot_planner/CarrotPlanner navfn/NavfnROS
 
 recovery_behaviors: [{name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}, {name: move_slow_and_clear, type: move_slow_and_clear/MoveSlowAndClear}, {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}, {name: rotate_recovery, type: rotate_recovery/RotateRecovery}] 
 

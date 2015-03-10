@@ -12,6 +12,7 @@ ActionServer *act_srv;
 ros::Subscriber sub_obj;
 ros::Subscriber sub_odom;
 ros::Publisher  pub_target_obj;
+ros::Publisher  buf_cmd;
 
 void obj_map_callback(const gazebo_msgs::ModelStates::ConstPtr &data)
 {
@@ -31,6 +32,9 @@ void odom_callback(const nav_msgs::Odometry::ConstPtr &odom)
     position_.pose.position = odom->pose.pose.position;
     position_.pose.orientation = odom->pose.pose.orientation;
     act_srv->set_position(position_);
+
+    if (!act_srv->get_is_under_planner_control())
+        buf_cmd.publish(act_srv->get_buf_cmd());
 }
 
 int main( int argc, char** argv )
@@ -44,6 +48,7 @@ int main( int argc, char** argv )
     sub_obj        = nh.subscribe<gazebo_msgs::ModelStates> ("fake_towermap/objects", 1, obj_map_callback);
     sub_odom       = nh.subscribe<nav_msgs::Odometry> ("odom", 1, odom_callback);
     pub_target_obj = nh.advertise<std_msgs::String> ("action_server/target_objects", 1);
+    buf_cmd = nh.advertise<geometry_msgs::Twist> ("cmd_vel", 1);
 
     ros::spin ();
     return 0;

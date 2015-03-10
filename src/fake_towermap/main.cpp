@@ -113,10 +113,6 @@ void map_callback(const gazebo_msgs::ModelStates::ConstPtr &data)
         std_srvs::Empty srv;
 
         if (!need_add_to_map && target_obj_changed) {
-            ROS_ERROR("UntrackedObj\n==========================");
-            for (int j = 0; j < untracked_objs.size(); ++j)
-                ROS_ERROR("%s", untracked_objs.at(j).c_str());
-            ROS_ERROR("========================== %d", target_obj_changed);
             if (clear_map_srv.call(srv))
                 target_obj_changed = false;
             else
